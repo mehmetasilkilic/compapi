@@ -1,26 +1,32 @@
 <template>
   <div class="home">
-    <p>My name is {{ name }} and my age is {{ age }}</p>
-    <button @click="handleClick">Click</button>
+    <h3>Ref</h3>
+    <p>{{ ninjaOne.name }} - {{ ninjaOne.age }}</p>
+    <button @click="updateNinjaOne">Update Ninja One</button>
+    <h3>Reactive</h3>
+    <p>{{ ninjaTwo.name }} - {{ ninjaTwo.age }}</p>
+    <button @click="updateNinjaTwo">Update Ninja Two</button>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, reactive } from "vue";
+
 export default {
   name: "Home",
   setup() {
-    //const p = ref(null);
+    const ninjaOne = ref({ name: "mario", age: 30 });
+    const ninjaTwo = reactive({ name: "luigi", age: 35 });
 
-    const name = ref("mario");
-    const age = ref(30);
-
-    const handleClick = () => {
-      name.value = "luigi";
-      age.value = 25;
+    const updateNinjaOne = () => {
+      ninjaOne.value.age = 40;
     };
 
-    return { name, age, handleClick };
+    const updateNinjaTwo = () => {
+      ninjaTwo.age = 40;
+    };
+
+    return { ninjaOne, ninjaTwo, updateNinjaOne, updateNinjaTwo };
   },
 };
 </script>
