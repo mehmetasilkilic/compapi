@@ -6,7 +6,7 @@ const getPosts = () => {
 
     const load = async () => {
         await new Promise(resolve => {
-            setTimeout(resolve, 1200)
+            setTimeout(resolve, 2000)
         })
 
         try {
